@@ -295,6 +295,6 @@ func newSessionService() {
 func NewServices() {
 	newLogService()
 	newMailService()
-	// newCacheService()
+	newCacheService()
 	newSessionService()
 }
