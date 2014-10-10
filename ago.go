@@ -29,6 +29,9 @@ func main() {
 	m.Get("/", routers.Home)
 	m.Get("/test", routers.Test)
 
+	// Not found handler.
+	// m.NotFound(routers.NotFound)
+
 	listenAddr := ":" + setting.HttpPort
 
 	m.RunOnAddr(listenAddr)

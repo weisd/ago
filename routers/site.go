@@ -16,3 +16,7 @@ func Test(ctx *middleware.Context) {
 	log.Info("info : %s", ctx.Session.Get("uid"))
 	log.Info("csrf : %s", ctx.Data["CsrfToken"])
 }
+
+func NotFound(ctx *middleware.Context) {
+	log.Error(2, "sdf")
+}
