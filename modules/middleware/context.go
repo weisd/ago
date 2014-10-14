@@ -5,6 +5,7 @@ import (
 	"github.com/macaron-contrib/cache"
 	"github.com/macaron-contrib/csrf"
 	"github.com/macaron-contrib/session"
+	"github.com/weisd/ago/models"
 	"github.com/weisd/ago/modules/setting"
 	"html/template"
 	"strings"
@@ -17,6 +18,10 @@ type Context struct {
 	csrf    csrf.CSRF
 	Flash   *session.Flash
 	Session session.Store
+
+	User *models.User
+
+	IsSigned bool
 }
 
 // Query querys form parameter.

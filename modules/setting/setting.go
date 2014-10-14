@@ -292,7 +292,31 @@ func newSessionService() {
 	log.Info("Session Service Enabled")
 }
 
+var Service struct {
+	RegisterEmailConfirm   bool
+	DisableRegistration    bool
+	RequireSignInView      bool
+	EnableCacheAvatar      bool
+	EnableNotifyMail       bool
+	EnableReverseProxyAuth bool
+	LdapAuth               bool
+	ActiveCodeLives        int
+	ResetPwdCodeLives      int
+	EnableGitHooks         bool
+}
+
+func newService() {
+	Service.ActiveCodeLives = Cfg.MustInt("service", "ACTIVE_CODE_LIVE_MINUTES", 180)
+	Service.ResetPwdCodeLives = Cfg.MustInt("service", "RESET_PASSWD_CODE_LIVE_MINUTES", 180)
+	Service.DisableRegistration = Cfg.MustBool("service", "DISABLE_REGISTRATION")
+	Service.RequireSignInView = Cfg.MustBool("service", "REQUIRE_SIGNIN_VIEW")
+	Service.EnableCacheAvatar = Cfg.MustBool("service", "ENABLE_CACHE_AVATAR")
+	Service.EnableReverseProxyAuth = Cfg.MustBool("service", "ENABLE_REVERSE_PROXY_AUTHENTICATION")
+	Service.EnableGitHooks = Cfg.MustBool("service", "ENABLE_GIT_HOOKS")
+}
+
 func NewServices() {
+	newService()
 	newLogService()
 	newMailService()
 	newCacheService()
